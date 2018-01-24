@@ -65,15 +65,15 @@ GLuint loadShader(const char* vertexfilename, const char* fragmentfilename)
     char* fragmentPtr = &fragment_shader_file[0];
     int vertexSize = vertex_shader_file.length();
     int fragmentSize = fragment_shader_file.length(); 
-    GLuint program = glCreateProgram();
+    program = glCreateProgram();
     vertex_shader_id = glCreateShader(GL_VERTEX_SHADER);
     fragment_shader_id = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(vertex_id,1,vertexPtr, vertexSize );
-    glShaderSource(fragment_id,1,fragmentPtr, fragmentSize);
-    glCompileShader(vertex_id);
-    glCompileShader(fragment_id);
-    glAttachShader(program, vertex_id);
-    glAttachShader(program, fragment_id);
+    glShaderSource(vertex_shader_id,1,&vertexPtr, &vertexSize );
+    glShaderSource(fragment_shader_id,1,&fragmentPtr, &fragmentSize);
+    glCompileShader(vertex_shader_id);
+    glCompileShader(fragment_shader_id);
+    glAttachShader(program, vertex_shader_id);
+    glAttachShader(program, fragment_shader_id);
     glLinkProgram(program);
 
     debugShader(vertex_shader_id,fragment_shader_id,program);
